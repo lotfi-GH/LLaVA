@@ -27,8 +27,11 @@ import re
 
 
 def image_parser(args):
-    out = args.image_file.split(args.sep)
-    return out
+    if type(args.image_file)=='str':
+        out = args.image_file.split(args.sep)
+        return out
+    else : 
+        return args.image_file
 
 
 def load_image(image_file):
@@ -44,10 +47,14 @@ def load_image(image_file):
 
 def load_images(image_files):
     out = []
-    for image_file in image_files:
+    if type(image_files)=='list'
+        for image_file in image_files:
+            image = load_image(image_file)
+            out.append(image)
+        return out
+    else :
         image = load_image(image_file)
-        out.append(image)
-    return out
+        return image
 
 
 def eval_model(args):
