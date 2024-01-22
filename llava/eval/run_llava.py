@@ -53,7 +53,7 @@ def load_images(image_files):
             out.append(image)
         return out
     else:
-        image = load_image(image_file)
+        image = load_image(image_files)
         return image
 
 
