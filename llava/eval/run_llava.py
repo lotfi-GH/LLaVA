@@ -27,35 +27,25 @@ import re
 
 
 def image_parser(args):
-    if type(args.image_file)=='str':
-        out = args.image_file.split(args.sep)
-        return out
-    else : 
-        return args.image_file
+    out = args.image_file.split(args.sep)
+    return out
 
 
 def load_image(image_file):
-    if type(image_file)=='str':
-        if image_file.startswith("http") or image_file.startswith("https"):
-            response = requests.get(image_file)
-            image = Image.open(BytesIO(response.content)).convert("RGB")
-        else:
-            image = Image.open(image_file).convert("RGB")
+    if image_file.startswith("http") or image_file.startswith("https"):
+        response = requests.get(image_file)
+        image = Image.open(BytesIO(response.content)).convert("RGB")
     else:
-        return image_file
+        image = Image.open(image_file).convert("RGB")
     return image
 
 
 def load_images(image_files):
     out = []
-    if type(image_files)=='list':
-        for image_file in image_files:
-            image = load_image(image_file)
-            out.append(image)
-        return out
-    else:
-        image = load_image(image_files)
-        return image
+    for image_file in image_files:
+        image = load_image(image_file)
+        out.append(image)
+    return out
 
 
 def eval_model(args):
