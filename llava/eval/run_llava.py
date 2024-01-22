@@ -42,7 +42,7 @@ def load_image(image_file):
         else:
             image = Image.open(image_file).convert("RGB")
     else:
-        return image
+        return image_file
     return image
 
 
