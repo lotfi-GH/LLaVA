@@ -47,12 +47,12 @@ def load_image(image_file):
 
 def load_images(image_files):
     out = []
-    if type(image_files)=='list'
+    if type(image_files)=='list':
         for image_file in image_files:
             image = load_image(image_file)
             out.append(image)
         return out
-    else :
+    else:
         image = load_image(image_file)
         return image
 
